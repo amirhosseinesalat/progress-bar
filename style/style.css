@@ -1,0 +1,125 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #389bba, #5d6774);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 20%,
+    transparent 21%
+  );
+  background-size: 100px 100px;
+  animation: moveBg 12s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes moveBg {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+.container {
+  text-align: center;
+  width: 35%;
+}
+
+.progress-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px auto;
+}
+.progress-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #ccc;
+  z-index: -1;
+}
+.progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 0%;
+  background-color: #eac316;
+  z-index: -1;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #999;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.circle.active {
+  background-color: #113c5a;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
+  transform: scale(1.1);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  border-style: none;
+  margin: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#prev {
+  background-color: #666767;
+  color: #fff;
+}
+
+#next {
+  background-color: #53a1d5;
+  color: #fff;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
